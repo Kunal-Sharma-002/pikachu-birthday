@@ -1,5 +1,5 @@
 /* ==========================================
-   PIKACHU THEME STYLESHEET (PORTRAIT & EMBED RESPONSIVE)
+   PIKACHU THEME STYLESHEET (MOBILE TOUCH READY)
    ========================================== */
 
 :root {
@@ -102,7 +102,7 @@ body {
     background-color: var(--yellow-primary);
     border: 4px solid var(--border-color);
     border-radius: 40px 40px 0 0;
-    z-index: 1;
+    z-index: 10;
 }
 
 .pika-ear::after {
@@ -170,11 +170,12 @@ body {
     padding: 4px 12px;
     border: 2px solid var(--border-color);
     border-radius: 20px;
-    z-index: 2;
+    z-index: 5;
     box-shadow: 0 2px 0 var(--border-color);
+    transition: opacity 0.5s ease;
 }
 
-/* --- Google Drive Portrait Video (iframe) Wrapper --- */
+/* --- Google Drive Portrait Video Wrapper --- */
 .portrait-video-wrapper {
     position: relative;
     width: 100%;
@@ -185,12 +186,49 @@ body {
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 8px 0px rgba(0, 0, 0, 0.12);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 4;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 24px;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    pointer-events: auto; /* Tap intercept karne ke liye */
+}
+
+.overlay-hint {
+    background-color: var(--border-color);
+    color: #FFFFFF;
+    font-family: 'Fredoka', cursive;
+    font-size: 0.8rem;
+    padding: 8px 16px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .portrait-video-wrapper iframe {
     width: 100%;
     height: 100%;
     border: none;
+    position: relative;
+    z-index: 1;
+}
+
+/* Auto-Hide CSS Class */
+.portrait-video-wrapper.controls-hidden .video-overlay,
+.portrait-video-wrapper.controls-hidden .badge {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none; /* Hide hone par direct iframe click hoga */
 }
 
 /* --- Responsive Pikachu Image Wrapper --- */
@@ -276,7 +314,7 @@ body {
     100% { transform: scale(1.2); }
 }
 
-/* --- Responsive Adjustments --- */
+/* --- Mobile Specific Adjustments --- */
 @media (max-width: 650px) {
     .banner-content h1 {
         font-size: 1.8rem;
@@ -286,7 +324,6 @@ body {
         font-size: 0.95rem;
     }
 
-    /* Mobile screens par ears dikhenge aur fit hone ke liye slightly adjust ho jayenge */
     .pika-ear {
         top: -36px;
         width: 28px;
