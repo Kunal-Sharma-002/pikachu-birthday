@@ -42,13 +42,13 @@
         <!-- Media Display Wrapper -->
         <div class="media-grid">
             
-            <!-- Portrait Google Drive Video Wrapper with Interactive Overlay -->
+            <!-- Portrait Google Drive Video Wrapper with Touch Handler -->
             <div class="portrait-video-wrapper" id="videoWrapper">
                 <div class="badge" id="videoBadge">🎥 Birthday Video</div>
                 
-                <!-- Overlay Layer for Hiding/Showing Interaction -->
+                <!-- Transparent Overlay Layer for Auto-Fade -->
                 <div class="video-overlay" id="videoOverlay">
-                    <span class="overlay-hint">Tap to Toggle Controls ⚡</span>
+                    <span class="overlay-hint">⚡ Tap video to show/hide controls ⚡</span>
                 </div>
 
                 <!-- Google Drive Embedded Video -->
@@ -63,7 +63,7 @@
             <!-- Responsive Pikachu Image Container -->
             <div class="pikachu-image-wrapper">
                 <div class="badge">⚡ Pikachu Mascot</div>
-                <img src="Pika Photo.jpeg" alt="Pikachu Mascot" class="responsive-pikachu-img">
+                <img src="pikachu.png" alt="Pikachu Mascot" class="responsive-pikachu-img">
             </div>
 
         </div>
@@ -81,29 +81,31 @@
             alert('⚡ PIKA-PIKA! 🥳 Wishing you the happiest birthday ever!');
         }
 
-        // Auto-Hide Overlay Script
         const videoWrapper = document.getElementById('videoWrapper');
         let hideTimer;
 
-        // Auto hide after 3.5 seconds on page load
         function startHideTimer() {
             clearTimeout(hideTimer);
             hideTimer = setTimeout(() => {
                 videoWrapper.classList.add('controls-hidden');
-            }, 3500);
+            }, 3000); // 3 seconds baad auto hide
         }
 
-        // Click/Tap to toggle controls show/hide
-        videoWrapper.addEventListener('click', () => {
+        // Mouse & Touch events handle karne ke liye
+        function toggleControls(e) {
             if (videoWrapper.classList.contains('controls-hidden')) {
                 videoWrapper.classList.remove('controls-hidden');
-                startHideTimer(); // Restart timer to hide again after 3.5s
+                startHideTimer();
             } else {
                 videoWrapper.classList.add('controls-hidden');
             }
-        });
+        }
 
-        // Start timer when page loads
+        // Event Listeners for both Desktop and Mobile Touch
+        videoWrapper.addEventListener('touchstart', toggleControls, { passive: true });
+        videoWrapper.addEventListener('click', toggleControls);
+
+        // Page load hote hi auto timer start
         window.addEventListener('load', startHideTimer);
     </script>
 </body>
