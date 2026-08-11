@@ -285,13 +285,31 @@ body {
     .banner-subtext {
         font-size: 0.95rem;
     }
-    
+
+    /* Mobile screens par ears dikhenge aur fit hone ke liye slightly adjust ho jayenge */
     .pika-ear {
-        display: none;
+        top: -36px;
+        width: 28px;
+        height: 60px;
+    }
+
+    .pika-ear::after {
+        width: 28px;
+        height: 20px;
+    }
+
+    .pika-ear.left {
+        left: 20px;
+        transform: rotate(-20deg);
+    }
+
+    .pika-ear.right {
+        right: 20px;
+        transform: rotate(20deg);
     }
 
     .card-header h2 {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
     }
 
     .portrait-video-wrapper,
