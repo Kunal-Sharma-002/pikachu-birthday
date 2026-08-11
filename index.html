@@ -42,12 +42,18 @@
         <!-- Media Display Wrapper -->
         <div class="media-grid">
             
-            <!-- Portrait Google Drive Video Wrapper -->
-            <div class="portrait-video-wrapper">
-                <div class="badge">🎥 Birthday Video</div>
+            <!-- Portrait Google Drive Video Wrapper with Interactive Overlay -->
+            <div class="portrait-video-wrapper" id="videoWrapper">
+                <div class="badge" id="videoBadge">🎥 Birthday Video</div>
                 
+                <!-- Overlay Layer for Hiding/Showing Interaction -->
+                <div class="video-overlay" id="videoOverlay">
+                    <span class="overlay-hint">Tap to Toggle Controls ⚡</span>
+                </div>
+
                 <!-- Google Drive Embedded Video -->
                 <iframe 
+                    id="driveVideo"
                     src="https://drive.google.com/file/d/1uZUFMkm897AFu7LY73X5_KqgweIxAEi1/preview" 
                     allow="autoplay; encrypted-media" 
                     allowfullscreen>
@@ -57,7 +63,6 @@
             <!-- Responsive Pikachu Image Container -->
             <div class="pikachu-image-wrapper">
                 <div class="badge">⚡ Pikachu Mascot</div>
-                <!-- Pikachu Image File -->
                 <img src="Pika Photo.jpeg" alt="Pikachu Mascot" class="responsive-pikachu-img">
             </div>
 
@@ -66,7 +71,7 @@
         <!-- Interactive Birthday Wish Box -->
         <div class="wish-box">
             <h3>Pika-Pika Wishes! 🎉</h3>
-            <p>In your happiness you may find me standing in the end of row, but in your sorrows I promise you to be just next to you always. No matter what turn life takes, no matter if we talk or meet daily or not, you will always hold a special place in my heart buddy🩷</p>
+            <p>May your special day be overflowing with electrifying happiness, laughter, and high-energy fun!</p>
             <button class="action-btn" onclick="triggerParty()">Send Electric Birthday Wishes! ⚡</button>
         </div>
     </main>
@@ -75,6 +80,31 @@
         function triggerParty() {
             alert('⚡ PIKA-PIKA! 🥳 Wishing you the happiest birthday ever!');
         }
+
+        // Auto-Hide Overlay Script
+        const videoWrapper = document.getElementById('videoWrapper');
+        let hideTimer;
+
+        // Auto hide after 3.5 seconds on page load
+        function startHideTimer() {
+            clearTimeout(hideTimer);
+            hideTimer = setTimeout(() => {
+                videoWrapper.classList.add('controls-hidden');
+            }, 3500);
+        }
+
+        // Click/Tap to toggle controls show/hide
+        videoWrapper.addEventListener('click', () => {
+            if (videoWrapper.classList.contains('controls-hidden')) {
+                videoWrapper.classList.remove('controls-hidden');
+                startHideTimer(); // Restart timer to hide again after 3.5s
+            } else {
+                videoWrapper.classList.add('controls-hidden');
+            }
+        });
+
+        // Start timer when page loads
+        window.addEventListener('load', startHideTimer);
     </script>
 </body>
 </html>
