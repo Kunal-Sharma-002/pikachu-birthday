@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pikachu Birthday Celebration</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Top Floating Sparkles Accent -->
+    <div class="sparkle-bar">⚡ 🎈 ⚡ 🎁 ⚡ 🎂 ⚡</div>
+
+    <!-- Upper Birthday Banner -->
+    <header class="top-banner">
+        <div class="banner-content">
+            <span class="sparkle-icon">⚡</span>
+            <h1>HAPPY BIRTHDAY!</h1>
+            <span class="sparkle-icon">⚡</span>
+        </div>
+        <p class="banner-subtext">Wishing you a supercharged day full of joy & surprises!</p>
+    </header>
+
+    <!-- Main Content Grid / Card Container -->
+    <main class="card-container">
+        <!-- Decorative Pikachu Ears -->
+        <div class="pika-ear left"></div>
+        <div class="pika-ear right"></div>
+
+        <!-- Section Header -->
+        <div class="card-header">
+            <div class="pika-cheek"></div>
+            <h2>Special Birthday Video & Photo!</h2>
+            <div class="pika-cheek"></div>
+        </div>
+
+        <!-- Media Display Wrapper -->
+        <div class="media-grid">
+            
+            <!-- Portrait Google Drive Video Wrapper -->
+            <div class="portrait-video-wrapper">
+                <div class="badge">🎥 Birthday Video</div>
+                
+                <!-- Google Drive Embedded Video -->
+                <iframe 
+                    src="https://drive.google.com/file/d/1uZUFMkm897AFu7LY73X5_KqgweIxAEi1/preview" 
+                    allow="autoplay; encrypted-media" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <!-- Responsive Pikachu Image Container -->
+            <div class="pikachu-image-wrapper">
+                <div class="badge">⚡ Pikachu Mascot</div>
+                <!-- Pikachu Image File -->
+                <img src="pikachu.png" alt="Pikachu Mascot" class="responsive-pikachu-img">
+            </div>
+
+        </div>
+
+        <!-- Interactive Birthday Wish Box -->
+        <div class="wish-box">
+            <h3>Pika-Pika Wishes! 🎉</h3>
+            <p>In your happiness you may find me standing in the end of row, but in your sorrows I promise you to be just next to you always. No matter what turn life takes, no matter if we talk or meet daily or not, you will always hold a special place in my heart buddy🩷</p>
+            <button class="action-btn" onclick="triggerParty()">Send Electric Birthday Wishes! ⚡</button>
+        </div>
+    </main>
+
+    <script>
+        function triggerParty() {
+            alert('⚡ PIKA-PIKA! 🥳 Wishing you the happiest birthday ever!');
+        }
+    </script>
+</body>
+</html>
